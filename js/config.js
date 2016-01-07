@@ -1,18 +1,39 @@
 require.config({
-	// baseUrl: 'scripts',
-	paths: {
 
-		// lib
-		'text'			: 'lib/text',
-		'underscore'	: 'lib/underscore-min',
-		'jquery'		: 'lib/jquery-2.1.4.min',
-		'backbone'		: 'lib/backbone',
-		'ocs'			: 'lib/ocs',
+    // dependency
+    shim: {
+        'bootstrap'              : {'deps': ['jquery']},
+        'backbone'               : {'deps': ['underscore']},
+        'backbonefire'           : {'deps': ['backbone', 'firebase']},
+        'testGridView'           : {'deps': ['backbone']},
+        'testGridRowView'        : {'deps': ['backbone']},
+        'testGridModel'          : {'deps': ['backbone']},
+        'testGridCollection'     : {'deps': ['firebase', 'backbone', 'backbonefire']}
+    },
 
-		// scripts
-		'1230'			: 'scripts/1230',
+    // path alias
+    baseUrl: 'js',
 
-		// tepmlate
-	}
+    paths: {
+
+        // library
+        'firebase'              : 'https://cdn.firebase.com/js/client/2.2.1/firebase',
+        'backbonefire'          : 'https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min',
+        'underscore'            : 'lib/underscore-min',
+        'jquery'                : 'lib/jquery-1.11.3.min',
+        'backbone'              : 'lib/backbone',
+        'bootstrap'             : 'lib/bootstrap.min',       
+        'text'                  : 'lib/text',
+        'util'                  : 'util/util',
+
+        // view
+        'testGridView'          : 'view/testGridView',
+        'testGridRowView'       : 'view/testGridRowView',
+
+        // model
+        'testGridModel'         : 'model/testGridModel',
+
+        // collection
+        'testGridCollection'    : 'collection/testGridCollection'
+    }
 });
-
