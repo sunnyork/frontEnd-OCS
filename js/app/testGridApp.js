@@ -1,6 +1,6 @@
 require(['../config'], function() {
     require([
-        // 'text!../tpl/testGrid.html', 'text',                                        // template
+        // 'text!../tpl/testGrid.html', 'text',                                     // template
         'underscore', 'jquery', 'backbone', 'backbonefire', 'bootstrap', 'util',    // library
         'testGridView', 'testGridRowView',                                          // backbone view
         'testGridModel',                                                            // backbone model

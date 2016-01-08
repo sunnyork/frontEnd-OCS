@@ -17,9 +17,7 @@ app.TestGridView = Backbone.View.extend({
 
         app.testGridCollection = new app.TestGridCollection();
 
-
         this.listenTo(app.testGridCollection, 'sync', function() {
-            // console.log(app.testGridCollection.toJSON());
             this.genGrid()
         });
     },
