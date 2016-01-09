@@ -107,8 +107,8 @@
                 </div>
                 <div class="text-center" id="pagintaion">
                     <ul class="pagination" id="pagination-list">
-                        <li><a><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
 <!-- 
+                        <li><a><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
                         <li class="active"><a href="">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
@@ -119,8 +119,8 @@
                         <li><a href="">8</a></li>
                         <li><a href="">9</a></li>
                         <li><a href="">10</a></li>
--->
                         <li><a><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
+-->
                     </ul>
                 </div>
                 <!-- end major content -->
@@ -130,12 +130,16 @@
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <!--<script src="javascripts/ie10-viewport-bug-workaround.js"></script>-->
 
+        <script type="text/template" id="pageItem">
+            <a><%= toPage %></a>
+        </script>
+
         <script type="text/template" id="pagination-button">
             <li><a href=""><%= pageNumber %></a></li>
         </script>
 
         <script type="text/template" id="gridRow">
-            <td></td>
+            <td><%= order %></td>
             <td><%= testid %></td>
             <td><%= title %></td>
             <td><%= date %></td>

@@ -11,29 +11,26 @@ app.TestGridView = Backbone.View.extend({
     events: {
 
         'click #search-by-keyword' : function() {
-            this.goSearch();
+            this.goSearch(1);
         },
 
-        'click .pagination-item' : function(event) {
+        'click .pagination li' : function(event) {
             var toPage = $(event.currentTarget).attr('toPage');
-            this.goSearch(toPage);
+            this.goSearch(parseInt(toPage));
         }
 
     },
 
     initialize: function() {
 
-        this.defaultStartPage = 1;
-        this.gridContainer = this.$('#exam-list');
-        this.emptyRow = this.$('#row-init');
+        this.gridContainer  = this.$('#exam-list');
+        this.emptyRow       = this.$('#row-init');
         this.paginationList = this.$('#pagination-list');
 
     },
 
     // method
-    goSearch: function(startPage) {
-        
-        var toPage = startPage ? startPage : this.startPage;
+    goSearch: function(startFromPage) {
 
         this.testGridCollection = new app.TestGridCollection();
 
@@ -42,21 +39,20 @@ app.TestGridView = Backbone.View.extend({
                 alert('no result found')
             } else {
                 this.emptyRow.hide();
-                this.gridContainer.html('');
-                this.genGrid(this.genSlicedList(toPage));
-
-                $('.pagination').append('<li class="pagination-item" toPage="11">test</li>')
+                this.gridContainer.empty();
+                this.genGrid(this.genSlicedList(startFromPage));
+                this.genPagination(startFromPage);
             }
         });
 
         this.testGridCollection.fetch();
     },
 
-    genSlicedList: function(startPage) {
+    genSlicedList: function(startFromPage) {
+        
+        var startFromRecord = (startFromPage -1) * 10,
 
-        var toPage = startPage ? startPage : this.defaultStartPage,
-            fullList = new app.TestGridCollection(),
-            slicedList = fullList.toJSON().slice(toPage-1, toPage+9);
+            slicedList = this.testGridCollection.toJSON().slice(startFromRecord, startFromRecord+10);
 
         return slicedList;
 
@@ -68,7 +64,7 @@ app.TestGridView = Backbone.View.extend({
 
         _.each(slicedList, function(model, index) {
 
-            var rowModel = new app.TestGridModel(model),
+            var rowModel = new app.TestGridModel(model).set({order: index+1}),
                 rowView = new app.TestGridRowView({
                     model: rowModel
                 });
@@ -77,36 +73,59 @@ app.TestGridView = Backbone.View.extend({
         })
     },
 
-    genPagination: function() {
-        this.paginationList.show();
-    }
+    genPagination: function(resultStartFrom) {
 
-    // old algorism for pagination
-    //
-    // if (0 != startPage - 1) {
-    //   prevRowBtn.clone().trigSearch({
-    //     toPage: startPage - 1
-    //   }).appendTo(inner);
-    // }
-    // // gen. pagination buttons        
-    // while (i <= endPage) {
-    //   var newBtn = btn.clone();
-    //   newBtn
-    //     .find('a').text(i).end()
-    //     .appendTo(inner);
-    //   if (i == current) {
-    //     newBtn.addClass('active');
-    //   }
-    //   newBtn.trigSearch({
-    //     toPage: i
-    //   })
-    //   i++;
-    // }
-    // // gen btn for next 10 (default: next 10)
-    // if (endPage < finalPage) {
-    //   nextRowBtn.clone().trigSearch({
-    //     toPage: endPage + 1
-    //   }).appendTo(inner);
-    // }
+        var destinationPage = resultStartFrom,
+            recordLength = this.testGridCollection.length,
+            pageLength = Math.floor(recordLength/10) +1,
+            startPage = (function() {
+                return (destinationPage%10 != 0)?
+                    (Math.floor(destinationPage/10) * 10 + 1) :
+                    (destinationPage - 9);
+            })(),
+            endPageIntheory = Math.ceil(destinationPage/10) * 10,
+            endPage = (endPageIntheory > pageLength) ? pageLength : endPageIntheory,
+            i;
+
+        this.paginationList.empty();
+        // console.log({
+        //     destinationPage: destinationPage,
+        //     recordLength: recordLength,
+        //     pageLength: pageLength,
+        //     startPage: startPage,
+        //     endPage: endPage,
+        // });
+        
+        // previous page link
+        if (1 != destinationPage) {
+            $('<li><a><span>&lt;</span></a></li>')
+                .attr({
+                    toPage : parseInt(destinationPage - 1),
+                    title  : 'previous'
+                })
+                .appendTo(this.paginationList);
+        }
+
+        // generic page link
+        for (i = startPage; i <= endPage; i ++) {
+            var currentFlag = (destinationPage == i ) ? 'active' : '';
+            $('<li />')
+                .addClass(currentFlag)
+                .attr('toPage', i)
+                .append($('<a />').html(i))
+                .appendTo(this.paginationList)
+        }
+
+        // next page link
+        if (pageLength != destinationPage) {
+            $('<li><a><span>&gt;</span></a></li>')
+                .attr({
+                    toPage : parseInt(destinationPage + 1),
+                    title  : 'next'
+                })
+                .appendTo(this.paginationList);
+        }
+
+    }
 
 });
