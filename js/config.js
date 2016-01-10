@@ -3,6 +3,7 @@ require.config({
     // dependency
     shim: {
         'bootstrap'              : {'deps': ['jquery']},
+        'modalInit'              : {'deps': ['bootstrap']},
         'backbone'               : {'deps': ['underscore']},
         'backbonefire'           : {'deps': ['backbone', 'firebase']},
         'testGridView'           : {'deps': ['backbone']},
