@@ -26,6 +26,9 @@ require.config({
         'text'                  : 'lib/text',
         'util'                  : 'util/util',
 
+        // plugin
+        'modalInit'             : 'plugin/modalInit',
+
         // view
         'testGridView'          : 'view/testGridView',
         'testGridRowView'       : 'view/testGridRowView',

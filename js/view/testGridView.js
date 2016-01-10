@@ -1,6 +1,7 @@
 // [======TODO=======]
-// Find out how to limit the query range with specific start point,
-// means fetch usable result only, but fetch all then filter in local.
+// # Find out how to limit the query range with specific start point,
+//   (means fetch usable result only, but fetch all then filter in local.)
+// # Make new function to perform 'WHERE foo LIKE "%bar" queries, just lkie in SQLs.
 
 var app = app || {};
 

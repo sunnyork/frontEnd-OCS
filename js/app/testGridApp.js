@@ -2,6 +2,7 @@ require(['../config'], function() {
     require([
         // 'text!../tpl/testGrid.html', 'text',                                     // template
         'underscore', 'jquery', 'backbone', 'backbonefire', 'bootstrap', 'util',    // library
+        'modalInit',                                                                // plugin
         'testGridView', 'testGridRowView',                                          // backbone view
         'testGridModel',                                                            // backbone model
         'testGridCollection'                                                        // backbone collection

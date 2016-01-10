@@ -16,6 +16,46 @@
         <![endif]-->
     </head>
     <body>
+
+        <!-- Modal / REPLACE test -->
+        <div class="modal" id="replace-container" >
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-danger" id="myModalLabel">替換這個考題</h4>
+                    </div>
+                    <form action="data/11.php" method="post" id="replace-exam">
+                        <div class="modal-body">
+                            <input type="file" name="exam-file" id="replace-exam-file">
+                            <input type="hidden" name="exam-id" id="replace-exam-id">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="replace-cancel" data-dismiss="modal">否</button>
+                            <button type="button" class="btn btn-primary" id="replace-confirm" data-dismiss="modal">是</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal / DELETE test -->
+        <div class="modal" id="delete-container" >
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title text-danger" id="myModalLabel">刪除考題</h4>
+              </div>
+              <div class="modal-body">
+                確認要刪除這個考題?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="modal-cancel" data-dismiss="modal">否</button>
+                <button type="button" class="btn btn-primary" id="modal-confirm" data-dismiss="modal">是</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- header -->
         <header class="container-fluid">
             <div class="row">
@@ -107,20 +147,7 @@
                 </div>
                 <div class="text-center" id="pagintaion">
                     <ul class="pagination" id="pagination-list">
-<!-- 
-                        <li><a><span aria-hidden="true">&lt;</span><span class="sr-only">Previous</span></a></li>
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">5</a></li>
-                        <li><a href="">6</a></li>
-                        <li><a href="">7</a></li>
-                        <li><a href="">8</a></li>
-                        <li><a href="">9</a></li>
-                        <li><a href="">10</a></li>
-                        <li><a><span aria-hidden="true">&gt;</span><span class="sr-only">Next</span></a></li>
--->
+                        <!-- dynamic markup goes here -->
                     </ul>
                 </div>
                 <!-- end major content -->
@@ -144,8 +171,8 @@
             <td><%= title %></td>
             <td><%= date %></td>
             <td>
-                <button type="button" class="btn btn-default btn-xs ocs-btn ocs-btn-replace" title="取代"><span class="sr-only">Replace</span></button>
-                <button type="button" class="btn btn-default btn-xs delete-exam ocs-btn ocs-btn-delete" title="刪除" eid="a000001"><span class="sr-only">Delete</span></button>
+                <button type="button" class="btn btn-default btn-xs ocs-btn ocs-btn-replace" title="取代" testid="<%= testid %>"><span class="sr-only">Replace</span></button>
+                <button type="button" class="btn btn-default btn-xs delete-exam ocs-btn ocs-btn-delete" title="刪除" testid="<%= testid %>"><span class="sr-only">Delete</span></button>
             </td>
         </script>
 

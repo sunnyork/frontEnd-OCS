@@ -443,6 +443,7 @@ header .navi li a:hover {
 /********************************************************
 / title section @ main content
 /*******************************************************/
+
 .main-wrap {
   /* for device testing
   @media (min-width: @screen-sm-min) {
@@ -775,4 +776,16 @@ header .navi li a:hover {
 }
 .score-sheet li {
   margin-bottom: 10px;
+}
+
+/********************************************************
+/ animation
+/*******************************************************/
+@keyframes deleterow {
+  0%   {background-color: peachpuff;}
+  100% {background-color: inherit;}
+}
+.animate td{
+  animation-name: deleterow;
+  animation-duration: 0.5s;
 }
