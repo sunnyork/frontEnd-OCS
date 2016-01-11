@@ -9,6 +9,8 @@
         <title>Home / Audatex Online Certification System v3.0</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/ocs30.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/plugin/starRate.css">
+        <link rel="stylesheet" href="css/plugin/datepicker3.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -126,7 +128,17 @@
                                 <div class="col-md-12 form-group">
                                     <div class="form-group">
                                         <label for="car-maker">廠牌</label>
-                                        <select id="car-maker" class="input-sm form-control"></select>
+                                        <!-- In last phase, the data in below select menu was fetched from remote while paged is loaded, then would be parsed aned appended into the container(#car-maker) immediatedly. -->
+                                        <!-- <select id="car-maker" class="input-sm form-control"></select> -->
+                                        <select class="input-sm form-control" id="car-maker">
+                                            <option value="na">please choose a brand</option>
+                                            <option value="00000001">benz</option>
+                                            <option value="00000002">Audi</option>
+                                            <option value="00000021">bmw</option>
+                                            <option value="ASDF123">BLAH</option>
+                                            <option value="FOO">bar</option>
+                                            <option value="zss11234">hello world</option>
+                                        </select>
                                     </div>
                                     <div class="form-group set-exam-level">
                                         <label for="exam-level">考題難度</label>

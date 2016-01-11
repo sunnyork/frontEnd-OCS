@@ -14,26 +14,15 @@ app.ReserveTestView = Backbone.View.extend({
 
     initialize: function() {
 
-        console.log('view initialized');
-        // this.gridContainer  = this.$('#exam-list');
+        this.publicStarRate = this.$('#exam-level');
+
+        this.initStarRate(this.publicStarRate);
 
     },
 
     // method
-    goSearch: function(startFromPage) {
-
-        // this.testGridCollection = new app.TestGridCollection();
-
-        // this.listenTo(this.testGridCollection, 'sync', function() {
-        //     if (this.testGridCollection.length == 0) {
-        //         alert('no result found')
-        //     } else {
-        //         this.emptyRow.hide();
-        //         this.gridContainer.empty();
-        //         this.genGrid(this.genSlicedList(startFromPage));
-        //         this.genPagination(startFromPage);
-        //     }
-        // });
+    initStarRate: function(container) {
+        $(container).starRate();
     }
 
 });

@@ -8,6 +8,7 @@ require.config({
         'modalInit'              : {'deps': ['bootstrap']},
         'backbone'               : {'deps': ['underscore']},
         'backbonefire'           : {'deps': ['backbone', 'firebase']},
+        'starRate'               : {'deps': ['jquery']},
 
         // view
         'testGridView'           : {'deps': ['backbone']},
@@ -41,6 +42,7 @@ require.config({
 
         // plugin
         'modalInit'             : 'plugin/modalInit',
+        'starRate'              : 'plugin/starRate',
 
         // view
         'testGridView'          : 'view/testGridView',
