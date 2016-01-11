@@ -8,6 +8,7 @@ require.config({
         'backbonefire'           : {'deps': ['backbone', 'firebase']},
         'testGridView'           : {'deps': ['backbone']},
         'testGridRowView'        : {'deps': ['backbone']},
+        'reserveTestView'        : {'deps': ['backbone']},
         'testGridModel'          : {'deps': ['backbone']},
         'testGridCollection'     : {'deps': ['firebase', 'backbone', 'backbonefire']}
     },
@@ -33,6 +34,7 @@ require.config({
         // view
         'testGridView'          : 'view/testGridView',
         'testGridRowView'       : 'view/testGridRowView',
+        'reserveTestView'       : 'view/reserveTestView',
 
         // model
         'testGridModel'         : 'model/testGridModel',
