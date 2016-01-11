@@ -2,15 +2,26 @@ require.config({
 
     // dependency
     shim: {
+
+        // library
         'bootstrap'              : {'deps': ['jquery']},
         'modalInit'              : {'deps': ['bootstrap']},
         'backbone'               : {'deps': ['underscore']},
         'backbonefire'           : {'deps': ['backbone', 'firebase']},
+
+        // view
         'testGridView'           : {'deps': ['backbone']},
         'testGridRowView'        : {'deps': ['backbone']},
         'reserveTestView'        : {'deps': ['backbone']},
+        'reserveTestDataView'    : {'deps': ['backbone']},
+
+        // model
         'testGridModel'          : {'deps': ['backbone']},
-        'testGridCollection'     : {'deps': ['firebase', 'backbone', 'backbonefire']}
+        'reserveTestModel'       : {'deps': ['backbone']},
+
+        // collection
+        'testGridCollection'     : {'deps': ['firebase', 'backbone', 'backbonefire']},
+        'reserveTestCollection'  : {'deps': ['firebase', 'backbone']},
     },
 
     // path alias
@@ -35,11 +46,14 @@ require.config({
         'testGridView'          : 'view/testGridView',
         'testGridRowView'       : 'view/testGridRowView',
         'reserveTestView'       : 'view/reserveTestView',
+        'reserveTestDataView'   : 'view/reserveTestDataView',
 
         // model
         'testGridModel'         : 'model/testGridModel',
+        'reserveTestModel'      : 'model/reserveTestModel',
 
         // collection
-        'testGridCollection'    : 'collection/testGridCollection'
+        'testGridCollection'    : 'collection/testGridCollection',
+        'reserveTestCollection' : 'collection/reserveTestCollection'
     }
 });
