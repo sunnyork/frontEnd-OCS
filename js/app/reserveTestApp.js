@@ -1,7 +1,7 @@
 require(['../config'], function() {
     require([
         'underscore', 'jquery', 'backbone', 'bootstrap',                            // library
-        'modalInit', 'starRate',                                                    // plugin
+        'modalInit', 'starRate', 'datePicker',                                      // plugin
         'reserveTestView', 'reserveTestDataView',                                   // backbone view
         'reserveTestModel',                                                         // backbone model
         'reserveTestCollection'                                                     // backbone collection

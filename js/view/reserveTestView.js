@@ -16,6 +16,7 @@ app.ReserveTestView = Backbone.View.extend({
         this.examineeList = this.$('.examinee-list label input');
 
         this.initStarRate(this.genericStarContainer);
+        this.initDatePicker();
         this.checkLabelHighlight();
     },
 
@@ -23,6 +24,19 @@ app.ReserveTestView = Backbone.View.extend({
     initStarRate: function(container) {
         $(container).starRate();
 
+    },
+
+    initDatePicker: function() {
+        // plugin init: data picker
+        $('#datepicker').datepicker({
+            format: "yyyy/mm/dd",
+            startDate: "today",
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: true,
+            autoclose: false,
+            todayHighlight: false
+        });
     },
 
     checkLabelHighlight: function(event) {

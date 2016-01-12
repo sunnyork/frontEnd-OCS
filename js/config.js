@@ -6,6 +6,7 @@ require.config({
         // library
         'bootstrap'              : {'deps': ['jquery']},
         'modalInit'              : {'deps': ['bootstrap']},
+        'datePicker'             : {'deps': ['bootstrap']},
         'backbone'               : {'deps': ['underscore']},
         'backbonefire'           : {'deps': ['backbone', 'firebase']},
         'starRate'               : {'deps': ['jquery']},
@@ -43,6 +44,7 @@ require.config({
         // plugin
         'modalInit'             : 'plugin/modalInit',
         'starRate'              : 'plugin/starRate',
+        'datePicker'            : 'plugin/bootstrap-datepicker',
 
         // view
         'testGridView'          : 'view/testGridView',
