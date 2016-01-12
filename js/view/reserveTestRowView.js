@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.ReserveTestDataView = Backbone.View.extend({
+app.ReserveTestRowView = Backbone.View.extend({
 
     tagName: 'div',
 

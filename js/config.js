@@ -9,13 +9,18 @@ require.config({
         'datePicker'             : {'deps': ['bootstrap']},
         'backbone'               : {'deps': ['underscore']},
         'backbonefire'           : {'deps': ['backbone', 'firebase']},
+
+        // plugin
         'starRate'               : {'deps': ['jquery']},
+        'rowAccess'              : {'deps': ['jquery']},
+        'validate'               : {'deps': ['jquery', 'bootstrap']},
+        'validateTip'            : {'deps': ['jquery', 'bootstrap', 'validate']},
 
         // view
         'testGridView'           : {'deps': ['backbone']},
         'testGridRowView'        : {'deps': ['backbone']},
         'reserveTestView'        : {'deps': ['backbone']},
-        'reserveTestDataView'    : {'deps': ['backbone']},
+        'reserveTestRowView'     : {'deps': ['backbone']},
 
         // model
         'testGridModel'          : {'deps': ['backbone']},
@@ -45,12 +50,16 @@ require.config({
         'modalInit'             : 'plugin/modalInit',
         'starRate'              : 'plugin/starRate',
         'datePicker'            : 'plugin/bootstrap-datepicker',
+        'rowAccess'             : 'plugin/rowAccess',
+        'validate'              : 'plugin/jquery.validate.min',
+        'validateTip'           : 'plugin/jquery-validate.bootstrap-tooltip',
+
 
         // view
         'testGridView'          : 'view/testGridView',
         'testGridRowView'       : 'view/testGridRowView',
         'reserveTestView'       : 'view/reserveTestView',
-        'reserveTestDataView'   : 'view/reserveTestDataView',
+        'reserveTestRowView'   : 'view/reserveTestRowView',
 
         // model
         'testGridModel'         : 'model/testGridModel',
