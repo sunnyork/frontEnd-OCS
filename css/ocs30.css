@@ -714,6 +714,12 @@ header .navi li a:hover {
 .book-exam .examinee-list label span:nth-child(2) {
   text-indent: 80px;
 }
+.book-exam .examinee-list .highlight label span:nth-child(1) {
+  background-color: #de6600;
+}
+.book-exam .examinee-list .highlight label span:nth-child(2) {
+  color: #de6600;
+}
 .score-sheet {
   background: #fff;
 }

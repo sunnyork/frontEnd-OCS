@@ -6,23 +6,45 @@ app.ReserveTestView = Backbone.View.extend({
 
     events: {
 
-        // 'click #search-by-keyword' : function() {
-        //     this.goSearch(1);
-        // },
+        'change .examinee-list input' : 'checkLabelHighlight'
 
     },
 
     initialize: function() {
 
-        this.publicStarRate = this.$('#exam-level');
+        this.genericStarContainer = this.$('#exam-level');
+        this.examineeList = this.$('.examinee-list label input');
 
-        this.initStarRate(this.publicStarRate);
-
+        this.initStarRate(this.genericStarContainer);
+        this.checkLabelHighlight();
     },
 
     // method
     initStarRate: function(container) {
         $(container).starRate();
+
+    },
+
+    checkLabelHighlight: function(event) {
+
+        var setHighlight = function(ele) {
+            var ele = $(ele),
+                examineeWrapper = $(ele).parent().parent().parent();
+            if(ele.prop('checked')) {
+                examineeWrapper.addClass('highlight');
+            } else {
+                examineeWrapper.removeClass('highlight');
+            }
+        }
+
+        if (event == undefined) {
+            $.each(this.examineeList, function(i, e) {
+                setHighlight(e);
+            });
+        } else {
+            setHighlight(event.currentTarget);
+        }
+
     }
 
 });
