@@ -118,108 +118,83 @@
                             </div>
                             <!-- / end step1 -->
 
-                            <!-- step2  part1-->
-                            <div class="row form-group form-inline">
-                                <hr class="dotted-hr">
-                                <h3 class="col-md-12">
-                                    Step.2<span>設定考題</span>
-                                </h3>
+                            <div id="test-grid-wrapper">
+                                <!-- step2  part1-->
+                                <div class="row form-group form-inline">
+                                    <hr class="dotted-hr">
+                                    <h3 class="col-md-12">
+                                        Step.2<span>設定考題</span>
+                                    </h3>
 
-                                <div class="col-md-12 form-group">
-                                    <div class="form-group">
-                                        <label for="car-maker">廠牌</label>
-                                        <!-- In last phase, the data in below select menu was fetched from remote while paged is loaded, then would be parsed aned appended into the container(#car-maker) immediatedly. -->
-                                        <!-- <select id="car-maker" class="input-sm form-control"></select> -->
-                                        <select class="input-sm form-control" id="car-maker">
-                                            <option value="na">please choose a brand</option>
-                                            <option value="00000001">benz</option>
-                                            <option value="00000002">Audi</option>
-                                            <option value="00000021">bmw</option>
-                                            <option value="ASDF123">BLAH</option>
-                                            <option value="FOO">bar</option>
-                                            <option value="zss11234">hello world</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group set-exam-level">
-                                        <label for="exam-level">考題難度</label>
-                                        <div class="starRate" id="exam-level">
-                                            <input type="hidden" value="">
-                                            <span title="set level = 1 stars"></span>
-                                            <span title="set level = 2 stars"></span>
-                                            <span title="set level = 3 stars"></span>
-                                            <span title="set level = 4 stars"></span>
-                                            <span title="set level = 5 stars"></span>
+                                    <div class="col-md-12 form-group">
+                                        <div class="form-group">
+                                            <label for="car-maker">廠牌</label>
+                                            <!-- In last phase, the data in below select menu was fetched from remote while paged is loaded, then would be parsed aned appended into the container(#car-maker) immediatedly. -->
+                                            <!-- <select id="car-maker" class="input-sm form-control"></select> -->
+                                            <select class="input-sm form-control" id="car-maker">
+                                                <option value="na">please choose a brand</option>
+                                                <option value="00000001">benz</option>
+                                                <option value="00000002">Audi</option>
+                                                <option value="00000021">bmw</option>
+                                                <option value="ASDF123">BLAH</option>
+                                                <option value="FOO">bar</option>
+                                                <option value="zss11234">hello world</option>
+                                            </select>
                                         </div>
+                                        <div class="form-group set-exam-level">
+                                            <label for="exam-level">考題難度</label>
+                                            <div class="starRate" id="exam-level">
+                                                <input type="hidden" value="1">
+                                                <span title="set level = 1 stars" class="chked"></span>
+                                                <span title="set level = 2 stars"></span>
+                                                <span title="set level = 3 stars"></span>
+                                                <span title="set level = 4 stars"></span>
+                                                <span title="set level = 5 stars"></span>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="form-group btn btn-primary btn-sm" id="add-exam">
+                                            <strong>新增一項</strong>
+                                        </button>
+                                        <input type="text" name="questionList" id="qlist-check" value="0" class="has-question">
                                     </div>
-                                    <button type="button" class="form-group btn btn-primary btn-sm" id="add-exam">
-                                        <strong>新增一項</strong>
-                                    </button>
-                                    <input type="text" name="questionList" id="qlist-check">
-                                </div>
 
-                            </div>
-                            <!-- / step2 part1 -->
-
-                            <!-- step2 part2 -->
-                            <div class="form-group">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover table-responsive center-1 center-5">
-                                        <col width="5%">
-                                        <col width="30%">
-                                        <col width="25%">
-                                        <col width="20%">
-                                        <col width="20%">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>廠牌</th>
-                                                <th>考題難度</th>
-                                                <th>數量</th>
-                                                <th>動作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="row-init">
-                                            <tr class="default-info">
-                                                <td colspan="5">
-                                                    <p class="text-center">
-                                                        <strong>尚未設定任何考題</strong>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tbody class="hide">
-                                            <tr id="row-prototype">
-                                                <td></td>
-                                                <td>
-                                                    <input type="hidden">
-                                                </td>
-                                                <td>
-                                                    <div class="starRate sm">
-                                                        <input type="hidden" value="0">
-                                                        <span title="set level = 1 stars"></span>
-                                                        <span title="set level = 2 stars"></span>
-                                                        <span title="set level = 3 stars"></span>
-                                                        <span title="set level = 4 stars"></span>
-                                                        <span title="set level = 5 stars"></span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <input min="1" type="number" value="1">
-                                                </td>
-                                                <td>
-                                                    <button title="刪除" class="del-exam btn btn-default btn-xs ocs-btn ocs-btn-delete" type="button">
-                                                        <span class="sr-only">Delete</span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tbody id="exam-container">
-                                            
-                                        </tbody>
-                                    </table>
                                 </div>
+                                <!-- / step2 part1 -->
+
+                                <!-- step2 part2 -->
+                                <div class="form-group">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover table-responsive center-1 center-5" id="test-grid">
+                                            <col width="5%">
+                                            <col width="30%">
+                                            <col width="25%">
+                                            <col width="20%">
+                                            <col width="20%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>廠牌</th>
+                                                    <th>考題難度</th>
+                                                    <th>數量</th>
+                                                    <th>動作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="row-init">
+                                                <tr class="default-info">
+                                                    <td colspan="5">
+                                                        <p class="text-center">
+                                                            <strong>尚未設定任何考題</strong>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody id="exam-container">
+                                           </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- / step2 part2 -->
                             </div>
-                            <!-- / step2 part2 -->
 
                             <!-- step3 -->
                             <div class="row form-group">
@@ -377,30 +352,29 @@
 
         <!-- ************************************ in-page template scripts start from HERE ************************************ -->
         <script type="text/template" id="newTestRow">
-            <tr id="row-prototype">
-                <td></td>
-                <td>
-                    <input type="hidden">
-                </td>
-                <td>
-                    <div class="starRate sm">
-                        <input type="hidden" value="0">
-                        <span title="set level = 1 stars"></span>
-                        <span title="set level = 2 stars"></span>
-                        <span title="set level = 3 stars"></span>
-                        <span title="set level = 4 stars"></span>
-                        <span title="set level = 5 stars"></span>
-                    </div>
-                </td>
-                <td>
-                    <input min="1" type="number" value="1">
-                </td>
-                <td>
-                    <button title="刪除" class="del-exam btn btn-default btn-xs ocs-btn ocs-btn-delete" type="button">
-                        <span class="sr-only">Delete</span>
-                    </button>
-                </td>
-            </tr>
+            <td></td>
+            <td>
+                <input type="hidden" value="<%= brandId %>" name="questionBrand[]">
+                <%= brandName %>
+            </td>
+            <td>
+                <div class="starRate sm" lv="<% difficulty %>">
+                    <input type="hidden" value="<%= difficulty %>" class="difficulty">
+                    <span title="set level = 1 stars"></span>
+                    <span title="set level = 2 stars"></span>
+                    <span title="set level = 3 stars"></span>
+                    <span title="set level = 4 stars"></span>
+                    <span title="set level = 5 stars"></span>
+                </div>
+            </td>
+            <td>
+                <input min="1" type="number" value="1" class="question-qty">
+            </td>
+            <td>
+                <button title="刪除" class="del-exam btn btn-default btn-xs ocs-btn ocs-btn-delete" type="button">
+                    <span class="sr-only">Delete</span>
+                </button>
+            </td>
         </script>
         <!-- / in-page scripts -->
 

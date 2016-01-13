@@ -16,22 +16,19 @@ app.ReserveTestView = Backbone.View.extend({
         this.genericStarContainer = this.$('#exam-level');
         this.examineeList = this.$('.examinee-list label input');
 
+        // initialize plugins
         this.initStarRate(this.genericStarContainer);
         this.initDatePicker();
         this.checkLabelHighlight();
         this.initValidator();
 
-        //this.initTestGrid();
+        // initialize sub views
+        this.initTestGrid();
     },
 
-    // method
-    sendForm: function() {
+    initTestGrid: function() {
+        this.testGridView = new app.ReserveTestGridView();
     },
-
-
-    // initTestGrid: function() {
-    //     console.log('testgrid')
-    // },
 
     initStarRate: function(container) {
         $(container).starRate();
@@ -69,9 +66,7 @@ app.ReserveTestView = Backbone.View.extend({
     },
 
     initValidator: function() {
-        // plugin init: form validation 
-        // @ 3rd.party plugin: jquery-validation-bootstrap-tooltip + jquery.validation
-        $('#validate-field').validate({
+        $('#validate-field').validate({ // @ 3rd.party plugin: jquery-validation-bootstrap-tooltip + jquery.validation
           rules: {
             examTitle: "required",
             examStartDate: {date:true, required: true},
@@ -102,7 +97,7 @@ app.ReserveTestView = Backbone.View.extend({
           submitHandler: function(form) {
             form.submit();
           },
-          focusInvalid: false, // turn focusInvalid (to 1.st error) functoin off
+          focusInvalid: false, // turn focusInvalid (to 1.st error) function off
           focusCleanup: true // hide error tip as error-input:focus
         });
     }
