@@ -1,4 +1,35 @@
-# OCS 3.0 prototype / file list
+# OCS 3.1 prototype / v.2015
+
+## Compatibility and Requirements
+
+* Fundamental
+** Bootstrap 3.2.0
+** Backbone.js 1.2.3
+** Require.js 2.1.22
+** firebase.js (for demonstration)
+** firebase.backbone.js (for demonstrantion)
+
+* JS library
+** jQuery 1.11.3
+** Underscore.js 1.8.3
+
+* JS plugin
+** starRate.js 1.1
+** modalInit.js 1.0
+
+* 3-party JS plugin
+** bootstrap-datepicker.js
+** jquery.validate.js
+** jquery-validate.bootstrap-tooltip.js
+
+* Cross-browser hack
+** html5shiv.min.js 3.7.2 (ie8 media query hack)
+** respond.min.js 1.4.2
+** ie10-viewport-bog-workaround.js
+
+```
+UNDER CONSTRUCTION ......
+```
 
 ## HTML
 
@@ -105,43 +136,3 @@ form submit (POST)
   questionCount[] {arr} question qty.
   questionLevel[] {arr} question level
   ```
-
-### examinee
-
-* page.31 exams overview / [31.html](31.html)
-* page.31a exam ~ before / [31a.html](31a.html)
-* page.31b exam ~ testing / [31b.html](31b.html)
-* page.31c exam ~ result / [31c.html](31c.html)
-* page.31d exam result detail(form mail) / [31d.html](31d.html)
-
-## CSS
-
-* bootstrap.min.css / bootstrap core [bootstrap.min.css](bootstrap.min.css)
-* ocs30.css / O.C.S. main style [ocs30.css](ocs30.css)
-* starRate.css / js plugin starRate [starRate.css](starRate.css)
-* datepicker3.css / 3-rd party js plugin datepicker [datepicker.css](datepicker.css)
-
-## JS
-
-### plugin
-
-* modalInit / v1.0 [modalInit.js](modalInit.js)
-* rowAccess / v1.0 [rowAccess.js](rowAccess.js)
-* starRate / v1.0 [starRate.js](starRate.js)
-
-### 3rd-party plugin
-
-* datepicker(calendar) / [bootstrap-datepicker.js](bootstrap-datepicker.js)
-* js validate / v1.13.1 [jquery.validate.min.js](jquery.validate.min.js)
-* validate using bootstrap-tooltip / v0.5 [jquery-validate.bootstrap-tooltip](jquery-validate.bootstrap-tooltip)
-
-### in page
-
-* in-page js files / [11.js](11.js),[21.js](21.js),[22.js](22.js),[31c.js](31c.js),
-
-### others
-
-* bootstrap / v3.2.0 [bootstrap.min.js](bootstrap.min.js)
-* ie8 media query hack / v3.7.2 [html5shiv.min.js](html5shiv.min.js), v1.4.2[respond.min.js](respond.min.js)
-* ie10 viewport hack / [ie10-viewport-bog-wordaround.js](ie10-viewport-bog-wordaround.js)
-* jquery / v1.11.1 [jqery.min.js](jqery.min.js)
