@@ -30,7 +30,7 @@ require.config({
 
         // collection
         'testGridCollection'       : {'deps': ['firebase', 'backbone', 'backbonefire']},
-        'reserveTestCollection'    : {'deps': ['firebase', 'backbone']},
+        'reserveTestCollection'    : {'deps': ['backbone']},
         'reserveTestGridCollection': {'deps': ['backbone']},
     },
 

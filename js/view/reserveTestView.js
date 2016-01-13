@@ -5,16 +5,19 @@ app.ReserveTestView = Backbone.View.extend({
     el: '#validate-field',
 
     events: {
-
-        'change .examinee-list input' : 'checkLabelHighlight'//,
-        // 'click #send-form' : 'sendForm'
-
+        'change .examinee-list input' : 'checkLabelHighlight'
     },
 
     initialize: function() {
 
-        this.genericStarContainer = this.$('#exam-level');
+        this.examTitle = this.$('#exam-title');
+        this.examDuration = this.$('#exam-duration');
+        this.examDateStart = this.$('#exam-date-start');
+        this.examDateEnd = this.$('#exam-date-end');
         this.examineeList = this.$('.examinee-list label input');
+
+        this.genericStarContainer = this.$('#exam-level');
+        this.reserveTestCollection = new app.ReserveTestCollection({model: new app.ReserveTestModel()});
 
         // initialize plugins
         this.initStarRate(this.genericStarContainer);
@@ -66,6 +69,7 @@ app.ReserveTestView = Backbone.View.extend({
     },
 
     initValidator: function() {
+        var that = this;
         $('#validate-field').validate({ // @ 3rd.party plugin: jquery-validation-bootstrap-tooltip + jquery.validation
           rules: {
             examTitle: "required",
@@ -95,11 +99,37 @@ app.ReserveTestView = Backbone.View.extend({
             questionList: {placement: 'top'}
           },
           submitHandler: function(form) {
-            form.submit();
+            that.submitForm();
           },
           focusInvalid: false, // turn focusInvalid (to 1.st error) function off
           focusCleanup: true // hide error tip as error-input:focus
         });
+    },
+
+    getSelectedExaminees: function() {
+        var examineeList = [];
+        $(this.examineeList).each(function(i, e) {
+            if ($(e).prop('checked')) {
+                examineeList.push($(e).val())
+            }
+        });
+        return examineeList;
+    },
+
+    submitForm: function() {
+        this.reserveTestCollection.set({
+            title:      this.examTitle.val(),
+            start:      this.examDateStart.val(),
+            end:        this.examDateEnd.val(),
+            duration:   this.examDuration.val(),
+            questions:  this.testGridView.reserveTestGridCollection.toJSON(),
+            examinees:  this.getSelectedExaminees()
+        });
+        /* demo only */ console.log(this.reserveTestCollection.toJSON())
+        /* demo only */ var tempMessage = 'submit後包成ＪＳＯＮ的資料打ＡＪＡＸ\n';
+        /* demo only */ tempMessage +='成功就bootstrap modal出現訊息，confirm後回考試列表\n';
+        /* demo only */ tempMessage +='失敗則bootstrap modal出現訊息，confirm留在頁面上\n';
+        /* demo only */ alert(tempMessage);
     }
 
 });
