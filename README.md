@@ -1,138 +1,109 @@
-# OCS 3.1 prototype / v.2015
+# OCS 3.0 phase1 prototype
+  * v.2015 refactoried with Backbone.js
+  * take a look at v.2014
+   * [github repo.](https://github.com/sunnyork/htmlprototype-ocs)
+   * [page list](http://sunnyork.github.io/htmlprototype-ocs/index.html)
 
-## Compatibility and Requirements
+## Javascript Compatibility and Requirements
 
 * Fundamental
-** Bootstrap 3.2.0
-** Backbone.js 1.2.3
-** Require.js 2.1.22
-** firebase.js (for demonstration)
-** firebase.backbone.js (for demonstrantion)
+ * Bootstrap 3.2.0 / grid system and part of ui widgets
+ * Backbone.js 1.2.3 / M.V.C.
+ * Require.js 2.1.22 / js dependency
+ * firebase.js (for demonstration)
+ * firebase.backbone.js (for demonstration)
 
-* JS library
-** jQuery 1.11.3
-** Underscore.js 1.8.3
+* Library
+ * jQuery 1.11.3
+ * Underscore.js 1.8.3
 
-* JS plugin
-** starRate.js 1.1
-** modalInit.js 1.0
+* Plugin
+ * starRate.js 1.1 / on-page rating widget used to specify the question difficulty
+ * modalInit.js 1.0 / used to integrate bootstrap modal widget with this system
 
-* 3-party JS plugin
-** bootstrap-datepicker.js
-** jquery.validate.js
-** jquery-validate.bootstrap-tooltip.js
+* 3-party Plugin
+ * bootstrap-datepicker.js / pop-up calendar
+ * jquery.validate.js / validate form via specific rules before submitting
+ * jquery-validate.bootstrap-tooltip.js / enhance look n' feel for bootstrap tooltip widget
 
 * Cross-browser hack
-** html5shiv.min.js 3.7.2 (ie8 media query hack)
-** respond.min.js 1.4.2
-** ie10-viewport-bog-workaround.js
+ * html5shiv.min.js 3.7.2 / ie8 media query hack)
+ * respond.min.js 1.4.2
+ * ie10-viewport-bog-workaround.js
 
+## Pages
+
+### Pages for different kind of users
+
+* Admin
+ * query and maintain questions / [online demo.](http://sunnyork.github.io/frontend-ocs/manageTestData.html)
+ * upload new questions
+ * upload new examinees
+
+* Exam manager
+ * manage exams
+ * book exams / [online demo.](/frontend-ocs/reserveTest.html)
+
+* Examinee
+ * view booked exams
+ * do exams
+
+### Generic Pages
+
+* HTML template
+* login page
+* error page
+
+## Style Sheets
+
+* bootstrap.min.css
+* ocs30.css
+* starRate.css
+* datepicker3.css
+
+## Directory Structure
+* for static files
+
+``` 
+ /static
+ :
+ :-- /css
+ :  :-- bootstrap css
+ :  :-- OCS css
+ :  :-- misc
+ :
+ :-- /images
+ :  :-- css sprites images
+ :  :-- non-spirites images
+ :
+ :-- /js
+ :  :-- config.js (js dependency)
+ :  :
+ :  :-- /app
+ :  :   :-- application entries
+ :  :
+ :  :-- /collection
+ :  :   :-- backbone model collections
+ :  :
+ :  :-- /lib
+ :  :   :-- backbone.js
+ :  :   :-- underscore.js
+ :  :   :-- jquery.js
+ :  :   :-- etc
+ :  :
+ :  :-- /model
+ :  :   :-- backbone models
+ :  :   
+ :  :-- /plugin
+ :  :   :-- newly implemented js plugins
+ :  :   :-- 3rd-party js plugins
+ :  :   
+ :  :-- /util
+ :  :   :-- utility js
+ :  :   
+ :  :-- /view
+ :      :-- backbone views
+ :    
+ :-- /tpl
+       :-- backbone template files
 ```
-UNDER CONSTRUCTION ......
-```
-
-## HTML
-
-### global
-
-* page.0 template / [00template.html](00template.html)
-* page.10 login / [10.html](10.html)
-* page.500 error mssage / [err.html](err.html)
-
-### inside
-
-* page.11 question management / [11j.html](11j.html)
-
-question query (AJAX GET) / request
-  ```PARAM
-  keyword {str} // keyword of question
-  rowSize {num} // qty. of pages in pagination
-  toPage {num} // destination page
-  ```
-question query / response
-  ```PARAM
-  {
-    "pagination" : { // {obj} pagination param.
-      "current" : 1, // {num} current page
-      "startPage" : 1, // {num} fist page(number)of pagination
-      "pagesLength" : 10, // {num} pages to show in pagination
-      "finalPage" : 16 // {num} total qty. of pages (in this query)
-    },
-    "dataObj" :{ // {obj} query result
-      "ID00001" : { // {str} question ID
-        "desc" : "blah blah", // {str} question description
-        "date" : "2014/12/25" // {date/str} established date
-      },
-      // etc......
-    }
-  }
-  ```
-
-delete question (AJAX POST) / request
-  ```PARAM
-  exam-id {str} question ID
-  ```
-
-delete question / response
-  ```PARAM
-  {str} result
-
-  case: 1 success
-
-  case: 0 fail
-  ```
-
-replace question (AJAX POST)/ request
-  ```PARAM
-  exam-file {file} new questions(*.xls)
-  exam-id {str} exam id of the question to be replaced
-  ```
-
-* page.12 upload question / [12j.html](12j.html)
-* page.13 upload examinee / [13.html](13.html)
-
-### manager
-
-* page.21 questions overview / [21j.html](21j.html)
-
-delete exam (AJAX POST) / request
-  ```PARAM
-  id {str} id of the exam to be removed
-  ```
-
-delete exam / response
-  ```PARAM
-  {str} result
-  case: 1 success
-  case: 0 fail
-  ```
-
-re-send exam invitation (AJAX POST) / request
-  ```PARAM
-  id {str} id of the exam
-  ```
-
-re-send exam invitation / response
-  ```PARAM
-  {str} result
-  case: 1 success
-  case: 0 fail
-  ```
-
-* page.21a question detail / [21a.html](21a.html)
-* page.22 booking exam / [22j.html](22j.html)
-* page.22a booking exam ~ result / [22aj.html](22aj.html)
-
-form submit (POST)
-  ```PARAM
-  (exam info)
-  examDuration {num} time limit (min.)
-  examStartDate {date} eg:2014/12/01
-  dxamEndDate {date} eg:2014/12/31
-  examineeList[] {arr} examinee list by id, eg: ['a001','a001','a003']
-
-  (questions detail)
-  questionBrand[] {arr} brand id of vehicle maker, eg: ['brand001','brand002']
-  questionCount[] {arr} question qty.
-  questionLevel[] {arr} question level
-  ```
