@@ -7,8 +7,8 @@ app.ReserveTestRowView = Backbone.View.extend({
     template: _.template($('#newTestRow').html()),
 
     events: {
-        'click .starRate': 'testDiff',
-        'change .question-qty': 'testQty'
+        'click .starRate': 'updateDifficulty',
+        'change .question-qty': 'updateQty'
     },
 
     initialize: function () {
@@ -32,13 +32,13 @@ app.ReserveTestRowView = Backbone.View.extend({
 
     },
 
-    testDiff: function() {
+    updateDifficulty: function() {
         this.model.set({
             difficulty: this.difficulty.val()
         });
     },
 
-    testQty: function() {
+    updateQty: function() {
         this.model.set({
             questionQty: this.questionQty.val()
         });
