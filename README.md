@@ -42,7 +42,7 @@
 
 * Exam manager
  * manage exams
- * book exams / [online demo.](/frontend-ocs/reserveTest.html)
+ * book exams / [online demo.](http://sunnyork.github.io/frontend-ocs/reserveTest.html)
 
 * Examinee
  * view booked exams
