@@ -6,7 +6,7 @@ require(['../config'], function() {
         'testGridModel',                                                            // backbone model
         'testGridCollection'                                                        // backbone collection
     ], function() {
-
+        $('#loading-mask').fadeOut(100).remove();
         new app.TestGridView();
 
     });
