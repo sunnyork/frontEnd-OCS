@@ -800,7 +800,7 @@ header .navi li a:hover {
 
 #loading-mask div {
   position: absolute;
-  top:50%;
+  top:40%;
   left:50%;
   width:100px;
   height:100px;

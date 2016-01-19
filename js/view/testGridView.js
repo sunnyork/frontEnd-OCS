@@ -27,15 +27,19 @@ app.TestGridView = Backbone.View.extend({
         this.gridContainer  = this.$('#exam-list');
         this.emptyRow       = this.$('#row-init');
         this.paginationList = this.$('#pagination-list');
+        this.searchButton   = this.$('#search-by-keyword');
 
     },
 
     // method
     goSearch: function(startFromPage) {
 
+        this.enableSearchButton(false);
+
         this.testGridCollection = new app.TestGridCollection();
 
         this.listenTo(this.testGridCollection, 'sync', function() {
+            this.enableSearchButton(true);
             if (this.testGridCollection.length == 0) {
                 alert('no result found')
             } else {
@@ -47,6 +51,32 @@ app.TestGridView = Backbone.View.extend({
         });
 
         this.testGridCollection.fetch();
+    },
+
+    enableSearchButton: function(status) {
+        if (!status){
+            var searchButton = this.searchButton,
+                buttonWrapper = searchButton.parent(),
+                h = this.searchButton.outerHeight(),
+                w = this.searchButton.outerWidth(),
+                mask = $('<div />')
+                        .attr('id', 'search-button-mask')
+                        .css({
+                            width:w,
+                            height:h,
+                            position:'absolute',
+                            'background-color':'#fff',
+                            opacity:0.7,
+                            position:'absolute',
+                            top:0,
+                            right:0
+                        });
+            buttonWrapper
+                .css({position: 'relative'})
+                .append(mask);
+        } else {
+            $('#search-button-mask').remove();
+        }
     },
 
     genSlicedList: function(startFromPage) {
