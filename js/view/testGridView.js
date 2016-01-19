@@ -59,7 +59,7 @@ app.TestGridView = Backbone.View.extend({
                 buttonWrapper = searchButton.parent(),
                 h = this.searchButton.outerHeight(),
                 w = this.searchButton.outerWidth(),
-                mask = $('<div />')
+                mask = $('<div></div>')
                         .attr('id', 'search-button-mask')
                         .css({
                             width:w,
@@ -69,7 +69,12 @@ app.TestGridView = Backbone.View.extend({
                             opacity:0.7,
                             position:'absolute',
                             top:0,
-                            right:0
+                            right:0,
+                            'text-align':'center',
+                            'background-image':'url(images/loading_s.gif)',
+                            'background-repeat':'no-repeat',
+                            'background-position':'50% 50%',
+                            'background-size':'contain'
                         });
             buttonWrapper
                 .css({position: 'relative'})
